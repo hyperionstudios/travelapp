@@ -16,19 +16,20 @@ public class DeciderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_decider);
+        //setContentView(R.layout.activity_decider);
         // TODO Decide which activity to launch
         prepareProperties();
+        finish();
     }
 
     private void prepareProperties() {
         SharedPreferences sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         boolean seen = sharedpreferences.getBoolean( "seen" , false );
-        if( seen ){
-            intent = new Intent( this, HomeScreen.class );
-        }else{
+//        if( seen ){
+//            intent = new Intent( this, HomeScreen.class );
+//        }else{
             intent = new Intent( this, OnBoardingScreen.class );
-        }
+//        }
         startActivity( intent );
 
     }

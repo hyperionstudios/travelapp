@@ -54,7 +54,7 @@ public class OnBoardingAdapter extends PagerAdapter {
         imageView.setImageResource( onBoardingModel.getImage() );
         titleTextView.setText( onBoardingModel.getTitle() );
         descriptionTextView.setText( onBoardingModel.getDescription() );
-
+        container.addView( view );
         return view;
 
     }

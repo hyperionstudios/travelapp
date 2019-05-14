@@ -25,11 +25,26 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/onboarding_pageview"
         android:layout_width="395dp"
-        android:layout_height="659dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        android:layout_height="525dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/dots_container"
+        android:layout_width="395dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/onboarding_pageview"
+        android:gravity="center"></LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

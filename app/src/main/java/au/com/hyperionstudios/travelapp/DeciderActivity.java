@@ -25,11 +25,11 @@ public class DeciderActivity extends AppCompatActivity {
     private void prepareProperties() {
         SharedPreferences sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         boolean seen = sharedpreferences.getBoolean( "seen" , false );
-//        if( seen ){
-//            intent = new Intent( this, HomeScreen.class );
-//        }else{
+        if( seen ){
+            intent = new Intent( this, HomeScreen.class );
+        }else{
             intent = new Intent( this, OnBoardingScreen.class );
-//        }
+        }
         startActivity( intent );
 
     }

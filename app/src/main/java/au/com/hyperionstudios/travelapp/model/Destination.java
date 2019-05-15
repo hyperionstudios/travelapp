@@ -5,32 +5,16 @@ import java.util.List;
 public class Destination {
 
     String title;
-    String descirpiton;
-    Location location;
-    String type;
-    String tripDuration;
-    String transportation;
-    int numberOfFBookings;
-    String featutedImageUrl;
-    List<String> galleryUrls;
-    List<Review> reviews;
+    String featuredImageUrl;
     List<Place> places;
 
-    public Destination(String title, String descirpiton, Location location, String type, String tripDuration, String transportation, int numberOfFBookings, String featutedImageUrl, List<String> galleryUrls, List<Review> reviews, List<Place> places) {
+    public Destination(String title, String featuredImageUrl, List<Place> places) {
         this.title = title;
-        this.descirpiton = descirpiton;
-        this.location = location;
-        this.type = type;
-        this.tripDuration = tripDuration;
-        this.transportation = transportation;
-        this.numberOfFBookings = numberOfFBookings;
-        this.featutedImageUrl = featutedImageUrl;
-        this.galleryUrls = galleryUrls;
-        this.reviews = reviews;
+        this.featuredImageUrl = featuredImageUrl;
         this.places = places;
     }
 
-    public int numberOfPlaces(){
+    int getPlacesCount(){
         return places.size();
     }
 
@@ -38,40 +22,8 @@ public class Destination {
         return title;
     }
 
-    public String getDescirpiton() {
-        return descirpiton;
-    }
-
-    public Location getLocation() {
-        return location;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public String getTripDuration() {
-        return tripDuration;
-    }
-
-    public String getTransportation() {
-        return transportation;
-    }
-
-    public int getNumberOfFBookings() {
-        return numberOfFBookings;
-    }
-
-    public String getFeatutedImageUrl() {
-        return featutedImageUrl;
-    }
-
-    public List<String> getGalleryUrls() {
-        return galleryUrls;
-    }
-
-    public List<Review> getReviews() {
-        return reviews;
+    public String getFeaturedImageUrl() {
+        return featuredImageUrl;
     }
 
     public List<Place> getPlaces() {

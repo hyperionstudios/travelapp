@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="au.com.hyperionstudios.travelapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        android:usesCleartextTraffic="true">
         <activity android:name=".DeciderActivity"
             android:theme="@android:style/Theme.NoDisplay">
             <intent-filter>

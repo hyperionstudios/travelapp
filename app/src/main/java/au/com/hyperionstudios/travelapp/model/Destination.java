@@ -4,18 +4,19 @@ import java.util.List;
 
 public class Destination {
 
+    int id;
     String title;
     String featuredImageUrl;
-    List<Place> places;
 
-    public Destination(String title, String featuredImageUrl, List<Place> places) {
+    public Destination( int id, String title, String featuredImageUrl, List<Place> places) {
+        this.id = id;
         this.title = title;
         this.featuredImageUrl = featuredImageUrl;
-        this.places = places;
     }
 
-    int getPlacesCount(){
-        return places.size();
+
+    public int getId() {
+        return id;
     }
 
     public String getTitle() {
@@ -26,7 +27,4 @@ public class Destination {
         return featuredImageUrl;
     }
 
-    public List<Place> getPlaces() {
-        return places;
-    }
 }

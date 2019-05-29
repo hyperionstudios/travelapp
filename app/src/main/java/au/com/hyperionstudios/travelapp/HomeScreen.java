@@ -2,6 +2,8 @@ package au.com.hyperionstudios.travelapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.android.volley.Request;
@@ -16,12 +18,24 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import au.com.hyperionstudios.travelapp.adapters.DestinationsAdapter;
+import au.com.hyperionstudios.travelapp.model.Destination;
+
 public class HomeScreen extends AppCompatActivity {
 
     private static final String TAG = "AMX";
     public String destinationsAPI;
 
     RequestQueue requestQueue;
+
+    List<Destination> destinations;
+
+    DestinationsAdapter destinationsAdapter;
+
+    RecyclerView destinationsRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +57,20 @@ public class HomeScreen extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.d(TAG, "onResponse: SUCCESS");
                         try {
                             JSONArray data = response.getJSONArray( "data" );
                             for( int i = 0; i < data.length(); i++ ){
                                 JSONObject jsonObject = data.getJSONObject( i );
-                                Log.d(TAG, "onResponse: " + jsonObject.getString( "title" ));
+                                Destination destination = new Destination(
+                                        jsonObject.getInt( "id" ),
+                                        jsonObject.getString( "title" ),
+                                        jsonObject.getString( "featured_image" ),
+                                        // TODO : Replace from API
+                                        25
+                                );
+                                destinations.add( destination );
+                                destinationsAdapter = new DestinationsAdapter( destinations , HomeScreen.this );
+                                destinationsRecyclerView.setAdapter( destinationsAdapter );
                             }
                         } catch (JSONException e) {
                             // TODO : Handle Errors
@@ -73,5 +95,9 @@ public class HomeScreen extends AppCompatActivity {
     private void setupElements() {
         destinationsAPI = getString( R.string.api_base ) + getString( R.string.destinations_endpoint );
         requestQueue = Volley.newRequestQueue( this );
+        destinations = new ArrayList<Destination>();
+        destinationsRecyclerView = findViewById( R.id.destinations_recyclerview );
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager( this );
+        destinationsRecyclerView.setLayoutManager( layoutManager );
     }
 }

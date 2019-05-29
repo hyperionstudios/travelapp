@@ -7,13 +7,14 @@ public class Destination {
     int id;
     String title;
     String featuredImageUrl;
+    int placesCount;
 
-    public Destination( int id, String title, String featuredImageUrl, List<Place> places) {
+    public Destination(int id, String title, String featuredImageUrl, int placesCount) {
         this.id = id;
         this.title = title;
         this.featuredImageUrl = featuredImageUrl;
+        this.placesCount = placesCount;
     }
-
 
     public int getId() {
         return id;
@@ -27,4 +28,7 @@ public class Destination {
         return featuredImageUrl;
     }
 
+    public int getPlacesCount() {
+        return placesCount;
+    }
 }

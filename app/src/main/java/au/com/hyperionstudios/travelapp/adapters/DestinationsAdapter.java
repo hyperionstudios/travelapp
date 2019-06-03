@@ -20,6 +20,7 @@ public class DestinationsAdapter extends RecyclerView.Adapter<DestinationsAdapte
 
     List<Destination> destinations;
     Context context;
+    DestinstionClickListener destinstionClickListener;
 
     public DestinationsAdapter(List<Destination> destinations, Context context) {
         this.destinations = destinations;
@@ -47,21 +48,34 @@ public class DestinationsAdapter extends RecyclerView.Adapter<DestinationsAdapte
     }
 
     public class DestinationViewHolder extends RecyclerView.ViewHolder {
-
         TextView destinationTitle;
         TextView placesCount;
         ImageView destinationImage;
-
-
         public DestinationViewHolder(@NonNull View itemView) {
             super(itemView);
             setupElements();
-        }
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    destinstionClickListener.onDestinationClickListener( position );
+                }
+            });
 
+        }
         private void setupElements() {
             destinationImage = itemView.findViewById(R.id.destination_image);
             destinationTitle = itemView.findViewById( R.id.destination_title );
             placesCount = itemView.findViewById( R.id.places_count );
         }
     }
+
+    public interface DestinstionClickListener {
+        void onDestinationClickListener( int position );
+    }
+
+    public void setOnClickItemListener( DestinstionClickListener destinstionClickListener ){
+        this.destinstionClickListener = destinstionClickListener;
+    }
+
 }

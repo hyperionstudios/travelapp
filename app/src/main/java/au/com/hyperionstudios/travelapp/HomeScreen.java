@@ -1,5 +1,6 @@
 package au.com.hyperionstudios.travelapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -71,6 +72,16 @@ public class HomeScreen extends AppCompatActivity {
                                 destinations.add( destination );
                                 destinationsAdapter = new DestinationsAdapter( destinations , HomeScreen.this );
                                 destinationsRecyclerView.setAdapter( destinationsAdapter );
+
+                                destinationsAdapter.setOnClickItemListener(new DestinationsAdapter.DestinstionClickListener() {
+                                    @Override
+                                    public void onDestinationClickListener(int position) {
+                                        Intent intent = new Intent( HomeScreen.this , DestinationPlaces.class );
+                                        Destination destination = destinations.get( position );
+                                        intent.putExtra( "destination_title" , destination.getTitle() );
+                                        startActivity( intent );
+                                    }
+                                });
                             }
                         } catch (JSONException e) {
                             // TODO : Handle Errors
